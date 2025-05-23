@@ -2,7 +2,10 @@
 'use client'
 import Image from "next/image";
 import useAPI from "../hooks/useAPI";
-import {CruisePreview} from "../components/cruisePreview";
+import { CruisePreview } from "../components/cruisePreview";
+import { useState, useMemo, useEffect } from "react";
+import { Pagination } from "../components/pagination";
+import { Cruise } from "../types/cruises";
 
 export default function Home() {
   const { data, loading, error } = useAPI();
@@ -31,7 +34,7 @@ export default function Home() {
   }, [data?.results, currentPage]);
 
   // Reset to page 1 when data changes
-  useState(() => {
+  useEffect(() => {
     setCurrentPage(1);
   }, [data]);
 
@@ -82,13 +85,7 @@ export default function Home() {
           ) : (
             <div className="space-y-0">
               {paginatedResults.map((cruise: Cruise, index) => (
-                <CruisePreview
-                  key={`${currentPage}-${index}`}
-                  id={((currentPage - 1) * resultsPerPage + index).toString()}
-                  name={cruise.name}
-                  imageUrl={cruise.ship?.image || '/placeholder-cruise.jpg'}
-                  description={`${cruise.duration} night ${cruise.region} cruise on ${cruise.ship?.name}. Starting from $${cruise.price}`}
-                />
+                <CruisePreview key={cruise.name + cruise.departureDate + index} cruise={cruise} />
               ))}
             </div>
           )}

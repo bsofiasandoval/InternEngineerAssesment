@@ -1,4 +1,4 @@
-const Pagination = ({ 
+export const Pagination = ({ 
     currentPage, 
     totalPages, 
     onPageChange 
@@ -36,7 +36,7 @@ const Pagination = ({
   
       return rangeWithDots;
     };
-  
+
     if (totalPages <= 1) return null;
   
     return (
@@ -52,7 +52,7 @@ const Pagination = ({
         {getVisiblePages().map((page, index) => (
           <button
             key={index}
-            onClick={() => typeof page === 'number' ? onPageChange(page) : null}
+            onClick={() => typeof page === 'number' ? onPageChange(page) : () => {}}
             disabled={typeof page !== 'number'}
             className={`px-3 py-2 text-sm font-medium border ${
               page === currentPage

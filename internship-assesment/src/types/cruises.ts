@@ -12,6 +12,7 @@ export interface Ship {
 }
 
 export interface Cruise {
+  id: string;
   price: number;
   name: string;
   ship: Ship;
