@@ -13,7 +13,24 @@ export default function useAPI(url: string = '/api/cruises') {
             setLoading(true);
             try {
                 const response = await axios.get<ApiResponse>(url);
-                setData(response.data);
+                // Format each cruise's itinerary to contain only city names
+                const formattedData = {
+                    ...response.data,
+                    results: Array.isArray(response.data.results)
+                        ? response.data.results.map(cruise => ({
+                            ...cruise,
+                            name: cruise.name
+                                .toLowerCase()
+                                .split(' ')
+                                .map((word: string) => word[0].toUpperCase() + word.slice(1))
+                                .join(' '),
+                            itinerary: Array.isArray(cruise.itinerary)
+                                ? cruise.itinerary.map(stop => stop.split(',')[0].trim())
+                                : cruise.itinerary
+                        }))
+                        : response.data.results
+                };
+                setData(formattedData);
             } catch (e) {
                 setError(e as AxiosError);
             } finally {
