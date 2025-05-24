@@ -1,7 +1,7 @@
 'use client'
 import useAPI from "../hooks/useAPI";
-import { CruisePreview } from "@/components/CruisePreview";
-import { Pagination } from "@/components/Pagination";
+import { CruisePreview } from "../components/cruisePreview";
+import { Pagination } from "../components/pagination";
 import { Cruise } from "../types/cruises";
 import { SortControls } from "@/components/cruise/SortControls";
 import { useSorting } from "@/hooks/useSorting";

@@ -44,7 +44,7 @@ export default function useAPI(url: string = '/api/cruises') {
         if (typeof window !== 'undefined') {
             fetchData(url);
         }
-    }, [fetchData]);
+    }, [fetchData, url]);
 
     return {data, loading, error};
 }
