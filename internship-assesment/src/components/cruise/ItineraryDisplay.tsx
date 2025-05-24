@@ -14,7 +14,7 @@ interface ItineraryDisplayProps {
 }
 
 
-export function ItineraryDisplay({ itinerary, duration }: ItineraryDisplayProps) {
+export function ItineraryDisplay({ itinerary }: ItineraryDisplayProps) {
   const maxDisplayItems = 4; // adjust based on available space
   
   if (itinerary.length <= maxDisplayItems) {

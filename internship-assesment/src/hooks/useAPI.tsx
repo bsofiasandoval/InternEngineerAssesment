@@ -37,14 +37,14 @@ export default function useAPI(url: string = '/api/cruises') {
                 setLoading(false);
             }
         },
-        [url]
+        []
     );
 
     useEffect(() => {
         if (typeof window !== 'undefined') {
             fetchData(url);
         }
-    }, [fetchData, url]);
+    }, [fetchData]);
 
     return {data, loading, error};
 }

@@ -11,7 +11,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { SortField, SortDirection, sortFieldLabels } from "@/hooks/useSorting";
+import { SortField, SortDirection } from "@/hooks/useSorting";
 
 interface SortControlsProps {
   sortField: SortField;

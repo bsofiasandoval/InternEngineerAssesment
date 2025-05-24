@@ -1,7 +1,7 @@
 'use client'
 import useAPI from "../hooks/useAPI";
-import { CruisePreview } from "../components/CruisePreview";
-import { Pagination } from "../components/Pagination";
+import { CruisePreview } from "@/components/CruisePreview";
+import { Pagination } from "@/components/Pagination";
 import { Cruise } from "../types/cruises";
 import { SortControls } from "@/components/cruise/SortControls";
 import { useSorting } from "@/hooks/useSorting";
@@ -16,7 +16,6 @@ export default function Home() {
     sortField, 
     sortDirection, 
     sortedData, 
-    handleSort, 
     getCurrentSortLabel,
     setSortField,
     setSortDirection 
